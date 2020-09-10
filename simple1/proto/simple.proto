@@ -1,0 +1,29 @@
+syntax = "proto3";
+
+package simple;
+option csharp_namespace = "GrpcSimple";
+
+// request
+message SimpleRequest{
+    string name = 1;
+    string msg = 2;
+}
+
+message SimpleRequestList {
+    repeated SimpleRequest person_list = 1;
+}
+
+
+// response
+message SimpleResponse{
+    string reply_msg = 1;
+}
+
+message SimpleResponseList{
+    repeated SimpleResponse response_list = 1;
+}
+
+// interface
+service SimpleService{
+    rpc SimpleSend (SimpleRequestList) returns (SimpleResponseList) {}
+}
